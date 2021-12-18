@@ -17,9 +17,8 @@ def utility_processor():
 
 @app.route('/')
 def homepage():
+
     selected_list = request.args.get('list_type',default='popular')
-    if not selected_list:
-        abort(404)
     movies = tmdb_client.get_movies(how_many=8, current_list=selected_list)
     return render_template("homepage.html", movies=movies, current_list=selected_list)
 
@@ -31,6 +30,15 @@ def movie_details(movie_id):
     movie_images = tmdb_client.get_movie_images(movie_id)
     selected_backdrop = random.choice(movie_images['backdrops'])
     return render_template("movie_details.html", movie=details, cast=cast, selected_backdrop=selected_backdrop)
+
+@app.route('/search')
+def search():
+    search_query = request.args.get("q", "")
+    if search_query:
+        movies = tmdb_client.search(search_query=search_query)
+    else:
+        movies = []
+    return render_template("search.html", movies=movies, search_query=search_query)
 
 
 if __name__ == '__main__':

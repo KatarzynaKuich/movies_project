@@ -17,8 +17,12 @@ def get_poster_url(poster_api_path, size="w342"):
     return f"{base_url}{size}/{poster_api_path}"
 
 
-def get_movies(how_many,current_list):
-    data = get_movies_list(current_list)
+def get_movies(how_many, current_list):
+    try:
+        data = get_movies_list(current_list)
+    except:
+        data = get_movies_list("popular")
+
     return data["results"][:how_many]
 
 
@@ -56,3 +60,14 @@ def get_movies_list(list_type):
     response = requests.get(endpoint, headers=headers)
     response.raise_for_status()
     return response.json()
+
+def search(search_query):
+   base_url = "https://api.themoviedb.org/3/"
+   headers = {
+       "Authorization": f"Bearer {api_token}"
+   }
+   endpoint = f"{base_url}search/movie/?query={search_query}"
+
+   response = requests.get(endpoint, headers=headers)
+   response = response.json()
+   return response['results']
