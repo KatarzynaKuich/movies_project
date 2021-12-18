@@ -61,16 +61,18 @@ def get_movies_list(list_type):
     response.raise_for_status()
     return response.json()
 
-def search(search_query):
-   base_url = "https://api.themoviedb.org/3/"
-   headers = {
-       "Authorization": f"Bearer {api_token}"
-   }
-   endpoint = f"{base_url}search/movie/?query={search_query}"
 
-   response = requests.get(endpoint, headers=headers)
-   response = response.json()
-   return response['results']
+def search(search_query):
+    base_url = "https://api.themoviedb.org/3/"
+    headers = {
+        "Authorization": f"Bearer {api_token}"
+    }
+    endpoint = f"{base_url}search/movie/?query={search_query}"
+
+    response = requests.get(endpoint, headers=headers)
+    response = response.json()
+    return response['results']
+
 
 def get_airing_today():
     endpoint = f"https://api.themoviedb.org/3/tv/airing_today"
@@ -81,3 +83,4 @@ def get_airing_today():
     response.raise_for_status()
     response = response.json()
     return response['results']
+

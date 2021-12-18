@@ -17,10 +17,10 @@ def utility_processor():
 
 @app.route('/')
 def homepage():
-
+    list = ['popular', 'top_rated', 'upcoming', 'now_playing']
     selected_list = request.args.get('list_type',default='popular')
     movies = tmdb_client.get_movies(how_many=8, current_list=selected_list)
-    return render_template("homepage.html", movies=movies, current_list=selected_list)
+    return render_template("homepage.html", movies=movies, current_list=selected_list,list=list)
 
 
 @app.route("/movie/<movie_id>")
