@@ -24,12 +24,13 @@
         </div>
     </div>
     <h3 class="my-4">Cast</h3>
-   {% for actor in cast %}
+ <div class="card-group">
+{% for actor in cast %}
            <div class="col-md-3 col-sm-6 mb-4">
                <a href="#">
                    <figure class="figure">
                        {% if actor.profile_path %}
-                           <img src="{{ tmdb_image_url(actor.profile_path,'w185') }}" class="figure-img img-fluid rounded" alt="{{ actor.name }}">
+                           <img src="{{ tmdb_image_url(actor.profile_path, 'w185') }}" class="figure-img img-fluid rounded" alt="{{ actor.name }}">
                        {% else %}
                            <img src="https://placehold.it/185x278?text={{ actor.name }}" class="figure-img img-fluid rounded" alt="{{ actor.name }}">
                        {% endif %}
@@ -38,6 +39,7 @@
                    </a>
            </div>
 {% endfor %}
-</div>
 
+ </div>
+</div>
 {% endblock %}

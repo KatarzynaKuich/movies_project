@@ -7,15 +7,17 @@
         <h1 class="mt-5">Witaj w mojej bibliotece filmów</h1>
         <p class="lead">Znajdziesz tutaj tylko najlepsze tytuły!</p>
     </div>
+
     <div class="col-lg-12 mb-4">
 
         {% for list in list %}
-         {% if list ==current_list %}
-        <a href="{{ url_for('homepage', list_type=list) }}"class="btn btn-fill-skew btn-primary">{{list|replace("_", " ")}}</a>
+        {% if list ==current_list %}
+        <a href="{{ url_for('homepage', list_type=list) }}" class="btn btn-info">{{list|replace("_", " ")}}</a>
         {% else %}
-        <a href="{{ url_for('homepage', list_type=list) }}"class="btn btn-fill-skew btn-outline-primary">{{list|replace("_", " ")}}</a>
+        <a href="{{ url_for('homepage', list_type=list) }}" class="btn btn-outline-info">{{list|replace("_", " ")}}</a>
         {% endif %}
-         {% endfor %}
+        {% endfor %}
+
     </div>
 
     {% for movie in movies %}
