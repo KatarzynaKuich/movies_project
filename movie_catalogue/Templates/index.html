@@ -19,20 +19,15 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <form class="form-inline" action="/search" method="GET">
-    <input class="form-control mr-sm-2" type="text" value="{% if search_query %}{{ search_query }}{% endif %}" placeholder="Szukaj" aria-label="Search" name="q">
-    <button class="btn btn-outline-success" type="submit">Szukaj</button>
+<form class="form-inline" action="/search" method="GET">
+                <input class="form-control mr-sm-2" type="text" value="{% if search_query %}{{ search_query }}{% endif %}" placeholder="Szukaj" aria-label="Search" name="q">
+                <button class="btn btn-outline-success" type="submit">Szukaj</button>
                 </form>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                <li class="nav-item "><a class="nav-link " id="navbarDropdown" href="#" role="button"
-                                         data-bs-toggle="dropdown" aria-expanded="false">Services</a>
-                <li class="nav-item "><a class="nav-link " id="navbarDropdown" href="#" role="button"
-                                         data-bs-toggle="dropdown" aria-expanded="false">Contact</a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                </li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('homepage') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page"  href="{{ url_for('today') }}"  >Ulubione
+                </a></li>
             </ul>
         </div>
     </div>

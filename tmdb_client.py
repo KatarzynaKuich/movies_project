@@ -71,3 +71,13 @@ def search(search_query):
    response = requests.get(endpoint, headers=headers)
    response = response.json()
    return response['results']
+
+def get_airing_today():
+    endpoint = f"https://api.themoviedb.org/3/tv/airing_today"
+    headers = {
+        "Authorization": f"Bearer {api_token}"
+    }
+    response = requests.get(endpoint, headers=headers)
+    response.raise_for_status()
+    response = response.json()
+    return response['results']
