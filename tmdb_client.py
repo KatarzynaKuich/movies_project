@@ -17,8 +17,8 @@ def get_poster_url(poster_api_path, size="w342"):
     return f"{base_url}{size}/{poster_api_path}"
 
 
-def get_movies(how_many,list_type):
-    data = get_popular_movies()
+def get_movies(how_many,current_list):
+    data = get_movies_list(current_list)
     return data["results"][:how_many]
 
 
