@@ -1,4 +1,6 @@
+
 import random
+import os
 import datetime
 from flask import Flask, render_template, request
 
@@ -47,6 +49,9 @@ def today():
     return render_template("today.html", movies=movies, today=today)
 
 
-
+# Workaround for the werkzeug reloader removing the current directory from the
+# path. It's nasty, but it works! Inspired by:
+# https://github.com/mitsuhiko/flask/issues/1246
+os.environ['PYTHONPATH'] = os.getcwd()
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
