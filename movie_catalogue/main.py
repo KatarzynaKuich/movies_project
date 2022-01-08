@@ -1,8 +1,8 @@
 import random
 import datetime
-from flask import Flask, render_template, request,abort
+from flask import Flask, render_template, request
 
-import tmdb_client
+from movie_catalogue import tmdb_client
 
 app = Flask(__name__)
 
@@ -45,6 +45,7 @@ def today():
     movies = tmdb_client.get_airing_today()
     today = datetime.date.today()
     return render_template("today.html", movies=movies, today=today)
+
 
 
 if __name__ == '__main__':
